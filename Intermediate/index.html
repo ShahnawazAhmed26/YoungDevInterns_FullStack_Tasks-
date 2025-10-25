@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiLogin School System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="page active">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="logo">📚</div>
+                    <h1>MultiLogin School System</h1>
+                    <p class="subtitle">Secure School Management Portal</p>
+                </div>
+
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="schoolName">School Name</label>
+                        <input 
+                            type="text" 
+                            id="schoolName" 
+                            placeholder="Enter your school name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminUsername">Admin Username</label>
+                        <input 
+                            type="text" 
+                            id="adminUsername" 
+                            placeholder="Enter admin username"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminPassword">Admin Password</label>
+                        <input 
+                            type="password" 
+                            id="adminPassword" 
+                            placeholder="Enter admin password"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+
+                <div class="login-footer">
+                    <p>Demo Credentials:</p>
+                    <p class="demo-text">School: Central High | Username: admin | Password: admin123</p>
+                </div>
+
+                <div id="loginError" class="error-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="page">
+        <div class="dashboard-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo-small">📚</div>
+                    <h2>School Admin</h2>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <button class="nav-item active" data-section="overview">
+                        <span class="icon">📊</span>
+                        <span>Overview</span>
+                    </button>
+                    <button class="nav-item" data-section="students">
+                        <span class="icon">👥</span>
+                        <span>Students</span>
+                    </button>
+                    <button class="nav-item" data-section="teachers">
+                        <span class="icon">👨‍🏫</span>
+                        <span>Teachers</span>
+                    </button>
+                    <button class="nav-item" data-section="classes">
+                        <span class="icon">🏫</span>
+                        <span>Classes</span>
+                    </button>
+                    <button class="nav-item" data-section="settings">
+                        <span class="icon">⚙️</span>
+                        <span>Settings</span>
+                    </button>
+                </nav>
+
+                <button id="logoutBtn" class="btn btn-logout">
+                    <span class="icon">🚪</span>
+                    <span>Logout</span>
+                </button>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Header -->
+                <header class="dashboard-header">
+                    <div class="header-left">
+                        <h1 id="schoolTitle">School Dashboard</h1>
+                        <p id="adminInfo" class="admin-info">Admin: username</p>
+                    </div>
+                    <div class="header-right">
+                        <div class="user-profile">
+                            <div class="avatar">👤</div>
+                            <div class="user-details">
+                                <p id="userNameDisplay" class="user-name">Admin</p>
+                                <p class="user-role">Administrator</p>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Content Sections -->
+                <div class="content-area">
+                    <!-- Overview Section -->
+                    <section id="overviewSection" class="content-section active">
+                        <h2>Dashboard Overview</h2>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">👥</div>
+                                <div class="stat-content">
+                                    <p class="stat-label">Total Students</p>
+                                    <p class="stat-value" id="totalStudents">0</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">👨‍🏫</div>
+                                <div class="stat-content">
+                                    <p class="stat-label">Total Teachers</p>
+                                    <p class="stat-value" id="totalTeachers">0</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🏫</div>
+                                <div class="stat-content">
+                                    <p class="stat-label">Total Classes</p>
+                                    <p class="stat-value" id="totalClasses">0</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">📚</div>
+                                <div class="stat-content">
+                                    <p class="stat-label">Active Courses</p>
+                                    <p class="stat-value">12</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-activity">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <span class="activity-icon">✅</span>
+                                    <div class="activity-text">
+                                        <p class="activity-title">New student enrolled</p>
+                                        <p class="activity-time">2 hours ago</p>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <span class="activity-icon">📝</span>
+                                    <div class="activity-text">
+                                        <p class="activity-title">Class schedule updated</p>
+                                        <p class="activity-time">5 hours ago</p>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <span class="activity-icon">👨‍🏫</span>
+                                    <div class="activity-text">
+                                        <p class="activity-title">Teacher profile updated</p>
+                                        <p class="activity-time">1 day ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Students Section -->
+                    <section id="studentsSection" class="content-section">
+                        <div class="section-header">
+                            <h2>Student Management</h2>
+                            <button class="btn btn-secondary" id="addStudentBtn">+ Add Student</button>
+                        </div>
+
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Student ID</th>
+                                        <th>Name</th>
+                                        <th>Class</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="studentsTableBody">
+                                    <tr>
+                                        <td>STU001</td>
+                                        <td>John Smith</td>
+                                        <td>10-A</td>
+                                        <td>john@school.com</td>
+                                        <td><span class="badge badge-active">Active</span></td>
+                                        <td>
+                                            <button class="btn-icon">✏️</button>
+                                            <button class="btn-icon">🗑️</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>STU002</td>
+                                        <td>Sarah Johnson</td>
+                                        <td>10-B</td>
+                                        <td>sarah@school.com</td>
+                                        <td><span class="badge badge-active">Active</span></td>
+                                        <td>
+                                            <button class="btn-icon">✏️</button>
+                                            <button class="btn-icon">🗑️</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>STU003</td>
+                                        <td>Michael Brown</td>
+                                        <td>11-A</td>
+                                        <td>michael@school.com</td>
+                                        <td><span class="badge badge-active">Active</span></td>
+                                        <td>
+                                            <button class="btn-icon">✏️</button>
+                                            <button class="btn-icon">🗑️</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Teachers Section -->
+                    <section id="teachersSection" class="content-section">
+                        <div class="section-header">
+                            <h2>Teacher Management</h2>
+                            <button class="btn btn-secondary" id="addTeacherBtn">+ Add Teacher</button>
+                        </div>
+
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Teacher ID</th>
+                                        <th>Name</th>
+                                        <th>Subject</th>
+                                        <th>Email</th>
+                                        <th>Classes</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="teachersTableBody">
+                                    <tr>
+                                        <td>TCH001</td>
+                                        <td>Dr. Emily Davis</td>
+                                        <td>Mathematics</td>
+                                        <td>emily@school.com</td>
+                                        <td>10-A, 10-B</td>
+                                        <td>
+                                            <button class="btn-icon">✏️</button>
+                                            <button class="btn-icon">🗑️</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>TCH002</td>
+                                        <td>Prof. James Wilson</td>
+                                        <td>English</td>
+                                        <td>james@school.com</td>
+                                        <td>11-A, 11-B</td>
+                                        <td>
+                                            <button class="btn-icon">✏️</button>
+                                            <button class="btn-icon">🗑️</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>TCH003</td>
+                                        <td>Ms. Lisa Anderson</td>
+                                        <td>Science</td>
+                                        <td>lisa@school.com</td>
+                                        <td>10-A, 11-A</td>
+                                        <td>
+                                            <button class="btn-icon">✏️</button>
+                                            <button class="btn-icon">🗑️</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Classes Section -->
+                    <section id="classesSection" class="content-section">
+                        <div class="section-header">
+                            <h2>Class Management</h2>
+                            <button class="btn btn-secondary" id="addClassBtn">+ Add Class</button>
+                        </div>
+
+                        <div class="classes-grid">
+                            <div class="class-card">
+                                <div class="class-header">
+                                    <h3>Class 10-A</h3>
+                                    <span class="class-badge">Active</span>
+                                </div>
+                                <div class="class-info">
+                                    <p><strong>Teacher:</strong> Dr. Emily Davis</p>
+                                    <p><strong>Students:</strong> 35</p>
+                                    <p><strong>Room:</strong> 101</p>
+                                    <p><strong>Shift:</strong> Morning</p>
+                                </div>
+                                <div class="class-actions">
+                                    <button class="btn-icon">✏️</button>
+                                    <button class="btn-icon">🗑️</button>
+                                </div>
+                            </div>
+
+                            <div class="class-card">
+                                <div class="class-header">
+                                    <h3>Class 10-B</h3>
+                                    <span class="class-badge">Active</span>
+                                </div>
+                                <div class="class-info">
+                                    <p><strong>Teacher:</strong> Dr. Emily Davis</p>
+                                    <p><strong>Students:</strong> 32</p>
+                                    <p><strong>Room:</strong> 102</p>
+                                    <p><strong>Shift:</strong> Morning</p>
+                                </div>
+                                <div class="class-actions">
+                                    <button class="btn-icon">✏️</button>
+                                    <button class="btn-icon">🗑️</button>
+                                </div>
+                            </div>
+
+                            <div class="class-card">
+                                <div class="class-header">
+                                    <h3>Class 11-A</h3>
+                                    <span class="class-badge">Active</span>
+                                </div>
+                                <div class="class-info">
+                                    <p><strong>Teacher:</strong> Prof. James Wilson</p>
+                                    <p><strong>Students:</strong> 38</p>
+                                    <p><strong>Room:</strong> 201</p>
+                                    <p><strong>Shift:</strong> Afternoon</p>
+                                </div>
+                                <div class="class-actions">
+                                    <button class="btn-icon">✏️</button>
+                                    <button class="btn-icon">🗑️</button>
+                                </div>
+                            </div>
+
+                            <div class="class-card">
+                                <div class="class-header">
+                                    <h3>Class 11-B</h3>
+                                    <span class="class-badge">Active</span>
+                                </div>
+                                <div class="class-info">
+                                    <p><strong>Teacher:</strong> Prof. James Wilson</p>
+                                    <p><strong>Students:</strong> 36</p>
+                                    <p><strong>Room:</strong> 202</p>
+                                    <p><strong>Shift:</strong> Afternoon</p>
+                                </div>
+                                <div class="class-actions">
+                                    <button class="btn-icon">✏️</button>
+                                    <button class="btn-icon">🗑️</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Settings Section -->
+                    <section id="settingsSection" class="content-section">
+                        <h2>School Settings</h2>
+                        <div class="settings-container">
+                            <div class="settings-group">
+                                <h3>School Information</h3>
+                                <div class="form-group">
+                                    <label>School Name</label>
+                                    <input type="text" id="settingsSchoolName" placeholder="School name">
+                                </div>
+                                <div class="form-group">
+                                    <label>School Email</label>
+                                    <input type="email" id="settingsSchoolEmail" placeholder="school@email.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>School Phone</label>
+                                    <input type="tel" id="settingsSchoolPhone" placeholder="+1 (555) 000-0000">
+                                </div>
+                                <div class="form-group">
+                                    <label>School Address</label>
+                                    <textarea id="settingsSchoolAddress" placeholder="Enter school address"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3>Admin Account</h3>
+                                <div class="form-group">
+                                    <label>Current Password</label>
+                                    <input type="password" placeholder="Enter current password">
+                                </div>
+                                <div class="form-group">
+                                    <label>New Password</label>
+                                    <input type="password" placeholder="Enter new password">
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <input type="password" placeholder="Confirm new password">
+                                </div>
+                                <button class="btn btn-primary">Update Password</button>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3>System Settings</h3>
+                                <div class="toggle-group">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        <span>Enable Email Notifications</span>
+                                    </label>
+                                </div>
+                                <div class="toggle-group">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        <span>Enable SMS Alerts</span>
+                                    </label>
+                                </div>
+                                <div class="toggle-group">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span>Maintenance Mode</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary">Save Settings</button>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
