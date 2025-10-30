@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Submissions - Internee</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-small">
+                    <div class="logo-icon">I</div>
+                    <span>Internee</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="admin-dashboard.html" class="nav-item">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="admin-interns.html" class="nav-item">
+                    <span class="icon">👥</span>
+                    <span>Manage Interns</span>
+                </a>
+                <a href="admin-reviews.html" class="nav-item active">
+                    <span class="icon">✓</span>
+                    <span>Review Submissions</span>
+                </a>
+                <a href="#" class="nav-item" onclick="logout()">
+                    <span class="icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <h1>Review Submissions</h1>
+                <div class="header-actions">
+                    <button class="btn btn-outline" onclick="logout()">Logout</button>
+                </div>
+            </header>
+
+            <!-- Review Stats -->
+            <section class="dashboard-stats">
+                <div class="stat-box">
+                    <div class="stat-value" id="pendingReviews">0</div>
+                    <div class="stat-label">Pending Review</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="approvedCount">0</div>
+                    <div class="stat-label">Approved</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="rejectedCount">0</div>
+                    <div class="stat-label">Rejected</div>
+                </div>
+            </section>
+
+            <!-- Submissions List -->
+            <section class="table-section">
+                <div class="section-header">
+                    <h2>Pending Submissions</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filterReviews('pending')">Pending</button>
+                        <button class="filter-btn" onclick="filterReviews('approved')">Approved</button>
+                        <button class="filter-btn" onclick="filterReviews('rejected')">Rejected</button>
+                    </div>
+                </div>
+
+                <div id="submissionsList" class="submissions-list">
+                    <!-- Submissions will be loaded here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Review Modal -->
+    <div id="reviewModal" class="modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2>Review Submission</h2>
+                <button class="modal-close" onclick="closeReviewModal()">&times;</button>
+            </div>
+            <div id="reviewContent" class="modal-body">
+                <!-- Review content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeReviewModal()">Close</button>
+                <button class="btn btn-danger" onclick="rejectSubmission()">Reject</button>
+                <button class="btn btn-success" onclick="approveSubmission()">Approve</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Feedback</h2>
+                <button class="modal-close" onclick="closeFeedbackModal()">&times;</button>
+            </div>
+            <form id="feedbackForm" class="modal-body">
+                <div class="form-group">
+                    <label for="feedbackText">Feedback</label>
+                    <textarea id="feedbackText" required placeholder="Enter your feedback..."></textarea>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeFeedbackModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="submitFeedback()">Submit Feedback</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/admin-reviews.js"></script>
+</body>
+</html>

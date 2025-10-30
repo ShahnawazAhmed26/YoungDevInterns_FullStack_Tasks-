@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Submissions - Internee</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-small">
+                    <div class="logo-icon">I</div>
+                    <span>Internee</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="intern-dashboard.html" class="nav-item">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="submissions.html" class="nav-item active">
+                    <span class="icon">📤</span>
+                    <span>Submissions</span>
+                </a>
+                <a href="#" class="nav-item" onclick="logout()">
+                    <span class="icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <h1>My Submissions</h1>
+                <div class="header-actions">
+                    <button class="btn btn-outline" onclick="logout()">Logout</button>
+                </div>
+            </header>
+
+            <!-- Submission Stats -->
+            <section class="dashboard-stats">
+                <div class="stat-box">
+                    <div class="stat-value" id="totalSubmissions">0</div>
+                    <div class="stat-label">Total Submissions</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="approvedSubmissions">0</div>
+                    <div class="stat-label">Approved</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="pendingSubmissions">0</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="rejectedSubmissions">0</div>
+                    <div class="stat-label">Rejected</div>
+                </div>
+            </section>
+
+            <!-- Submissions List -->
+            <section class="table-section">
+                <div class="section-header">
+                    <h2>All Submissions</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filterSubmissions('all')">All</button>
+                        <button class="filter-btn" onclick="filterSubmissions('approved')">Approved</button>
+                        <button class="filter-btn" onclick="filterSubmissions('pending')">Pending</button>
+                        <button class="filter-btn" onclick="filterSubmissions('rejected')">Rejected</button>
+                    </div>
+                </div>
+
+                <div id="submissionsList" class="submissions-list">
+                    <!-- Submissions will be loaded here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Submission Details Modal -->
+    <div id="submissionDetailsModal" class="modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2>Submission Details</h2>
+                <button class="modal-close" onclick="closeSubmissionDetailsModal()">&times;</button>
+            </div>
+            <div id="submissionDetailsContent" class="modal-body">
+                <!-- Details will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeSubmissionDetailsModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/submissions.js"></script>
+</body>
+</html>

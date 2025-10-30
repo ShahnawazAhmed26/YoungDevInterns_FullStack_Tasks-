@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Internee</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="logo-small">
+                    <div class="logo-icon">I</div>
+                    <span>Internee</span>
+                </div>
+                <h1>Admin Portal</h1>
+                <p>Sign in to manage internships</p>
+            </div>
+
+            <form id="adminLoginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="email">Admin Email</label>
+                    <input type="email" id="email" name="email" required placeholder="admin@internee.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="••••••••">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            </form>
+
+            <div class="auth-footer">
+                <p><a href="index.html">Back to home</a></p>
+            </div>
+
+            <div class="demo-credentials">
+                <p><strong>Demo Admin Credentials:</strong></p>
+                <p>Email: admin@internee.com</p>
+                <p>Password: admin123</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

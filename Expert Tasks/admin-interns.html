@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Interns - Internee</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-small">
+                    <div class="logo-icon">I</div>
+                    <span>Internee</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="admin-dashboard.html" class="nav-item">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="admin-interns.html" class="nav-item active">
+                    <span class="icon">👥</span>
+                    <span>Manage Interns</span>
+                </a>
+                <a href="admin-reviews.html" class="nav-item">
+                    <span class="icon">✓</span>
+                    <span>Review Submissions</span>
+                </a>
+                <a href="#" class="nav-item" onclick="logout()">
+                    <span class="icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <h1>Manage Interns</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="openAddInternModal()">+ Add Intern</button>
+                    <button class="btn btn-outline" onclick="logout()">Logout</button>
+                </div>
+            </header>
+
+            <!-- Interns List -->
+            <section class="table-section">
+                <div class="section-header">
+                    <h2>All Interns</h2>
+                    <input type="text" id="searchInterns" class="search-input" placeholder="Search interns...">
+                </div>
+
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Company</th>
+                                <th>Start Date</th>
+                                <th>Progress</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="internsListBody">
+                            <!-- Interns will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add/Edit Intern Modal -->
+    <div id="internModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="internModalTitle">Add Intern</h2>
+                <button class="modal-close" onclick="closeInternModal()">&times;</button>
+            </div>
+            <form id="internForm" class="modal-body">
+                <div class="form-group">
+                    <label for="internName">Full Name</label>
+                    <input type="text" id="internName" required>
+                </div>
+                <div class="form-group">
+                    <label for="internEmail">Email</label>
+                    <input type="email" id="internEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="internCompany">Company</label>
+                    <input type="text" id="internCompany" required>
+                </div>
+                <div class="form-group">
+                    <label for="internStartDate">Start Date</label>
+                    <input type="date" id="internStartDate" required>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeInternModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveIntern()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Intern Details Modal -->
+    <div id="internDetailsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Intern Details</h2>
+                <button class="modal-close" onclick="closeInternDetailsModal()">&times;</button>
+            </div>
+            <div id="internDetailsContent" class="modal-body">
+                <!-- Details will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeInternDetailsModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/admin-interns.js"></script>
+</body>
+</html>
